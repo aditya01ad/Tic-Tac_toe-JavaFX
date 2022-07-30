@@ -4,6 +4,7 @@ public class CheckWinner {
 	
 	// check after every move for current player
 	static void checkWinner() {
+		System.out.println("Check Winner");
 		MyUserinterface.win = false;
 		for (int i = 0; i < 3; i++) {
 			checkRow(i);

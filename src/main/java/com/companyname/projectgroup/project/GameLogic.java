@@ -11,7 +11,7 @@ public class GameLogic {
 	
 	// a player wins or tie in moves are 9 and no winer
 	static void gameOver() {
-
+		System.out.println("Check GameOver");
 		if (MyUserinterface.win == true) {
 			
 		}
@@ -22,38 +22,55 @@ public class GameLogic {
 	}
 
 	static void chelkUpdate() {
-		for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < 3; j++) {
-				a = i;
-				b = j;
-				MyUserinterface.textArr[i - 1][j - 1].setOnMouseClicked(new EventHandler<MouseEvent>() {
-					@Override
-					public void handle(MouseEvent e) {
-						updateBord(a, b);
-						updateGame(a, b);
-					}
-				});
-			}
-		}
+		System.out.println("Check Event");
+		App.root.getOnMouseClicked();
 	}
 
 	// update the label text
-	static void updateBord(int i, int j) {
-
-		if (MyUserinterface.textArr[i - 1][j - 1].getText() == " ") {
-			MyUserinterface.textArr[i - 1][j - 1].setText(Player.getCurrentPlayer().getSymbol());
+	static void updateBoard(int i, int j) {
+		System.out.println("Update Board");
+		if (MyUserinterface.textArr[i][j].getText() == " ") {
+			MyUserinterface.textArr[i][j].setText(Player.getCurrentPlayer().getSymbol());
 			
 		}
 	}
 
 	// update game
 	static void updateGame(int i, int j) {
-
-		if (game[i - 1][j - 1] == 2) {
-			game[i - 1][j - 1] = Player.getCurrentPlayer().getValue();
+		System.out.println("Update Game");
+		if (game[i][j] == 2) {
+			game[i][j] = Player.getCurrentPlayer().getValue();
+			System.out.print(Player.getCurrentPlayer().getValue());
 			moves++;
 			//System.out.println(game[i-1][j-1]);
 		}
 	}
-
+	static void setMyEventHandle() {
+		System.out.println("set Mouse Event");
+		App.root.setOnMouseClicked(new EventHandler<MouseEvent>() {
+			@Override
+			public void handle(MouseEvent eS) {
+				for (int i = 0; i < 3; i++) { 
+					for (int j = 0; j < 3; j++) {
+				
+						System.out.println("Event Occur");
+						updateBoard(a, b);
+						updateGame(a, b);
+						gameOver();
+						CheckWinner.checkWinner();
+					}
+				}
+			}
+		});
+		
+		/*
+		 * for (int i = 0; i < 3; i++) { for (int j = 0; j < 3; j++) {
+		 * MyUserinterface.textArr[i][j].setOnMouseClicked(new
+		 * EventHandler<MouseEvent>() {
+		 * 
+		 * @Override public void handle(MouseEvent eS) {
+		 * System.out.println("Event Occur"); gameOver(); updateBoard(a, b);
+		 * updateGame(a, b); CheckWinner.checkWinner(); } }); } }
+		 */
+	}
 }
