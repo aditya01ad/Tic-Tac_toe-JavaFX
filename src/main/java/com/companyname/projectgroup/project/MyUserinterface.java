@@ -36,9 +36,10 @@ public class MyUserinterface {
 	private static void creatTextFieldArr() {
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
-				textArr[i][j] = new Label();
+				textArr[i][j] = new Label(" ");
 				textArr[i][j].setAlignment(Pos.CENTER);
 				textArr[i][j].setMinHeight(160);
+				
 				textArr[i][j].setFont(new Font(70));
 				// textArr[i][j].setStyle(" -fx-background-insets: 0;");
 				gridPane.add(textArr[i][j], i, j + 1);
@@ -69,4 +70,7 @@ public class MyUserinterface {
 			}
 		}
 	}
+	
+	
+
 }
